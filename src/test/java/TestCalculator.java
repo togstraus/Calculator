@@ -2,7 +2,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertThrows;
 
 public class TestCalculator {
 
@@ -42,7 +41,6 @@ public class TestCalculator {
         double actual = Calculator.sum(first, second);
         assertEquals(actual, expected);
     }
-
     @Test(dataProvider = "sub")
     public void subTest(double first, double second, double expected) {
         double actual = Calculator.sub(first, second);
@@ -58,81 +56,8 @@ public class TestCalculator {
         double actual = Calculator.div(first, second);
         assertEquals(actual, expected);
     }
-    @Test
+    @Test(expectedExceptions = ArithmeticException.class)
     public void divNegativeTest(){
-        assertThrows(ArithmeticException.class, ()->{
-            double div = Calculator.div(10, 0);});
+        Calculator.div(10, 0);
     }
-
-//    @Test
-//    public void sumTest2() {
-//        double actual = Calculator.sum(-1, -3);
-//        assertEquals(actual, -4);
-//    }
-//
-//    @Test
-//    public void sumTest3() {
-//        double actual = Calculator.sum(1, -3);
-//        assertEquals(actual, -2);
-//    }
-//
-//    @Test
-//    public void subTest1() {
-//        double actual = Calculator.sub(3, 1);
-//        assertEquals(actual, 2);
-//    }
-//
-//    @Test
-//    public void subTest2() {
-//        double actual = Calculator.sub(1, 3);
-//        assertEquals(actual, -2);
-//    }
-//
-//    @Test
-//    public void subTest3() {
-//        double actual = Calculator.sub(-3, -1);
-//        assertEquals(actual, -2);
-//    }
-//
-//    @Test
-//    public void multTest1() {
-//        double actual = Calculator.mult(2, 3);
-//        assertEquals(actual, 6);
-//    }
-//
-//    @Test
-//    public void multTest2() {
-//        double actual = Calculator.mult(2, -3);
-//        assertEquals(actual, -6);
-//    }
-//
-//    @Test
-//    public void multTest3() {
-//        double actual = Calculator.mult(-2, -6);
-//        assertEquals(actual, 12);
-//    }
-//
-//    @Test
-//    public void divTest1() {
-//        double actual = Calculator.div(4, 2);
-//        assertEquals(actual, 2);
-//    }
-//
-//    @Test
-//    public void divTest2() {
-//        double actual = Calculator.div(-4, 2);
-//        assertEquals(actual, -2);
-//    }
-//
-//    @Test
-//    public void divTest3() {
-//        double actual = Calculator.div(4, 0);
-//        assertEquals(actual, Infinity);
-//    }
-
-//    @Test
-//    public void sumWorstTest(){
-//        double actual = Calculator.sum(a, 3);
-//        assertEquals(actual, 4);
-//    }
 }
