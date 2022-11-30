@@ -1,29 +1,27 @@
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Scanner;
-
-@Getter
-@Setter
 public class Calculator {
 
-    public static double sum(int a, int b) {
-        return a + b;
+    public static double sum(double a, double b) {
+        return Math.round((a + b) * 100.0) / 100.0;
     }
 
-    public static double sub(int a, int b) {
-        return a - b;
+    public static double sub(double a, double b) {
+        return Math.round((a - b) * 100.0) / 100.0;
     }
 
-    public static double mult(int a, int b) {
-        return a * b;
+    public static double mult(double a, double b) {
+        return Math.round((a * b) * 100.0) / 100.0;
     }
 
-    public static double div(int a, int b) {
-        return (double) a / (double) b;
+    public static double div(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("Делить на ноль нельзя");
+        }
+        return Math.round((a / b) * 100.0) / 100.0;
     }
 
     static double result;
+
     public static void actions(String action, int a, int b) {
         switch (action) {
 
